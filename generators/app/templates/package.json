@@ -1,0 +1,197 @@
+{
+  "name": "test",
+  "version": "0.1.0",
+  "description": "test project description",
+  "contributors": [
+    "orca ui team"
+  ],
+  "author": "test R&D team",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.orcadt.com/Orcadt/test.git"
+  },
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --coverage --env=jsdom"
+  },
+  "dependencies": {
+    "@svgr/webpack": "4.1.0",
+    "antd": "3.12.4",
+    "autoprefixer": "7.1.6",
+    "babel-core": "6.26.0",
+    "babel-eslint": "7.2.3",
+    "babel-jest": "20.0.3",
+    "babel-loader": "7.1.2",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-import": "1.3.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-react-app": "3.1.1",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-runtime": "6.26.0",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "1.1.3",
+    "cluster": "~0.7.7",
+    "cron": "~1.3.0",
+    "crypto-js": "^3.1.9-1",
+    "css-loader": "0.28.7",
+    "dotenv": "4.0.0",
+    "echarts": "~3.8.5",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16.2": "^1.4.0",
+    "eslint": "4.10.0",
+    "eslint-config-react-app": "~2.1.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "~1.1.6",
+    "fs-extra": "3.0.1",
+    "happypack": "^5.0.0",
+    "html-webpack-plugin": "2.29.0",
+    "install": "^0.12.2",
+    "jest": "20.0.4",
+    "jest-fetch-mock": "^2.1.1",
+    "jest-localstorage-mock": "^2.4.0",
+    "jquery": "~3.3.1",
+    "js-cookie": "~2.2.0",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.3.0",
+    "koa-socket-2": "^1.0.17",
+    "less": "~2.7.3",
+    "less-loader": "~4.0.5",
+    "less-plugin-autoprefix": "~1.5.1",
+    "lodash-decorators": "^6.0.0",
+    "log4js": "^3.0.6",
+    "mongoose": "^5.0.1",
+    "nodemailer": "^4.4.2",
+    "npm": "^6.9.0",
+    "object-assign": "4.1.1",
+    "perfect-scrollbar": "1.4.0",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.8",
+    "preload-webpack-plugin": "^2.3.0",
+    "promise": "8.0.1",
+    "raf": "3.4.0",
+    "rc-animate": "^2.4.4",
+    "rc-queue-anim": "^1.6.0",
+    "react": "16.2.0",
+    "react-addons-update": "15.6.2",
+    "react-dev-utils": "4.2.1",
+    "react-dom": "16.2.0",
+    "react-hot-loader": "3.1.3",
+    "react-redux": "5.0.5",
+    "react-router": "4.2.0",
+    "react-router-dom": "4.2.2",
+    "redux": "3.7.2",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.2.0",
+    "require-dir": "0.3.2",
+    "script-ext-html-webpack-plugin": "^2.0.1",
+    "sinon": "^7.2.3",
+    "socket.io-client": "~2.0.4",
+    "style-loader": "0.19.0",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.6.2",
+    "webpack": "3.8.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-dev-server": "2.9.4",
+    "webpack-manifest-plugin": "1.3.2",
+    "webworkify-webpack": "^2.1.3",
+    "whatwg-fetch": "2.0.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0.1,
+        "functions": 0.1,
+        "lines": 0.1,
+        "statements": 0.1
+      }
+    },
+    "coverageReporters": [
+      "lcov"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/http/",
+      "<rootDir>/src/socket/",
+      "<rootDir>/src/services/keyPressFilter/",
+      "<rootDir>/src/components/DiskConfiguration/",
+      "<rootDir>/src/components/FSTransfer/",
+      "<rootDir>/src/views/ServiceAndClient/",
+      "<rootDir>/src/views/Initialize/InitializeRaw.js",
+      "<rootDir>/src/views/StoragePool/CreateTarget.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setup.js",
+      "jest-localstorage-mock"
+    ],
+    "testMatch": [
+      "<rootDir>/src/tests/**/*.{js,jsx,mjs}",
+      "jest-localstorage-mock"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^StyleSheets$": "<rootDir>/src/styleSheets/index.less",
+      "^Images/(.*)$": "<rootDir>/src/images/$1",
+      "^Components/(.*)$": "<rootDir>/src/components/$1",
+      "^RouterPath$": "<rootDir>/src/routerPath/index.js",
+      "^Views/(.*)$": "<rootDir>/src/views/$1",
+      "^Redux/(.*)$": "<rootDir>/src/redux/$1",
+      "^Store$": "<rootDir>/src/redux/index.js",
+      "^Actions/(.*)$": "<rootDir>/src/redux/actions/$1",
+      "^Reducers$": "<rootDir>/src/redux/reducers/index.js",
+      "^Services$": "<rootDir>/src/services/index.js",
+      "^Http/(.*)$": "<rootDir>/src/http/$1",
+      "^Socket$": "<rootDir>/src/socket/index.js"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "mjs",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "proxy": {
+    "/socket.io/*": {
+      "target": "http://localhost:3000",
+      "ws": true
+    },
+    "/api/*": {
+      "target": "http://localhost:3000",
+      "changeOrigin": true,
+      "secure": false
+    }
+  }
+}

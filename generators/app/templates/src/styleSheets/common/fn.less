@@ -1,0 +1,21 @@
+.clear-fix (){
+    display: block;
+    zoom: 1;
+    &:after {
+        content: " ";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
+.box-shadow (@h: 0, @v: 0, @blur: 1px, @spread: 1px, @color: #e1e1e1){
+    box-shadow: @h @v @blur @spread @color;
+}
+
+.text-overflow-ellipsis (){
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}

@@ -1,0 +1,16 @@
+.DS_Store
+.idea
+.vscode
+node_modules
+yarn.lock
+logs
+build
+www
+package-lock.json
+report.html
+coverage
+venv
+**.pyc
+**.egg-info
+**__pycache__
+**.pytest_cache

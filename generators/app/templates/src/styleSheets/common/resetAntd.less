@@ -1,0 +1,447 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+a {
+    color: @text !important;
+    &:hover {
+        color: @dark-blue !important;
+    }
+}
+
+.ant-modal-mask {
+    background-color: rgba(0, 0, 0, .35) !important;
+}
+
+.ant-modal {
+    .ant-modal-body {
+        .ant-table-title {
+            padding: 8px 0 !important;
+        }
+    }
+}
+
+.ant-btn {
+    padding: 0 24px !important;
+    font-size: @smallFont !important;
+    height: 30px !important;
+    border-radius: 0 !important;
+    &.ant-btn-sm {
+        padding: 0 24px;
+        font-size: @smallFont !important;
+        height: 30px;
+        border-radius: 0;
+    }
+    &.ant-btn-primary {
+        color: @white;
+        background-color: @light-blue;
+        border: none;
+        &:hover {
+            color: @white;
+            background-color: @blue;
+        }
+        // https://github.com/ant-design/ant-design/issues/13098
+        // https://www.zhihu.com/question/306858501/answer/559312342
+        // https://zhuanlan.zhihu.com/p/53214213
+        // Will always remember this fucking christmas egg that is introduced
+        // in a code push in September of 2018 with a perfect commit message:
+        // this will not display in change-log.
+        /*
+        &.christmas {
+            &:before {
+                display: none !important;
+            }
+        }
+        */
+    }
+    &.ant-btn-danger {
+        padding: 0 24px;
+        font-size: @smallFont !important;
+        height: 30px;
+        color: @white;
+        background-color: @red;
+        border: none;
+        border-radius: 0;
+        &[disabled] {
+            color: rgba(0, 0, 0, 0.25);
+            background-color: #f5f5f5;
+            border-color: #d9d9d9;
+            text-shadow: none;
+        }
+        &:focus {
+            color: @white;
+            background-color: @red;
+        }
+    }
+    &.ant-btn-warning {
+        color: @white;
+        background-color: @warn-btn;
+        border: none;
+        &:hover {
+            color: @white;
+            background-color: @warn-btn-hover;
+        }
+        &:focus {
+            color: @white;
+            background-color: @warn-btn;
+        }
+    }
+    &.ant-btn-circle {
+        padding: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 16px !important;
+        border-radius: 50% !important;
+        &.ant-btn-sm {
+            padding: 0 !important;
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 14px !important;
+            border-radius: 50% !important;
+        }
+    }
+}
+
+.ant-popover {
+    font-size: @smallFont !important;
+    .ant-popover-inner {
+        border-radius: 0;
+        .ant-popover-inner-content {
+            max-width: 300px;
+        }
+    }
+}
+
+.ant-modal {
+    .ant-modal-content {
+        border-radius: 0;
+        .ant-modal-header {
+            padding: 15px 24px;
+            .ant-modal-title {
+                font-size: @normalFont;
+                font-weight: normal;
+            }
+        }
+        .ant-modal-footer {
+            padding: 15px 24px;
+        }
+    }
+}
+
+.ant-form {
+    .ant-row {
+        font-size: @smallFont;
+        &.ant-form-item {
+            margin-bottom: 5px !important;
+            .ant-form-item-label {
+                white-space: normal !important;
+                label {
+                    // float: left;
+                    font-size: @smallFont;
+                }
+            }
+        }
+    }
+}
+
+.ant-form-explain {
+    font-size: @smallFont !important;
+}
+
+.ant-input {
+    border-radius: 0 !important;
+    &.ant-input-sm {
+        font-size: @smallFont;
+    }
+}
+
+ .ant-input-number {
+     border-radius: 0 !important;
+     &.ant-input-number-sm {
+        font-size: @smallFont;
+     }
+ }
+
+textarea {
+    &.ant-input {
+        padding: 1px 7px;
+        font-size: @smallFont;
+    }
+}
+
+.ant-input-group-wrapper {
+    &.ant-input-group-wrapper-sm {
+        .ant-input-group {
+            .ant-input-group-addon {
+                font-size: @smallFont;
+                border-radius: 0;
+            }
+        }
+    }
+}
+
+.ant-select {
+    &.ant-select-sm {
+        font-size: @smallFont;
+    }
+}
+
+.ant-select-selection {
+    border-radius: 0 !important;
+    .ant-select-selection-selected-value {
+        span {
+            display: inline-block;
+            width: 105%;
+            .fs-text-overflow-ellipsis();
+        }
+    }
+    .ant-select-selection__choice__remove {
+        &:hover {
+            color: @light-blue !important;
+        }
+    }
+}
+
+.ant-select-dropdown {
+    .ant-select-dropdown-menu-item {
+        font-size: @smallFont;
+        span {
+            display: inline-block;
+            width: 105%;
+            .fs-text-overflow-ellipsis();
+        }
+    }
+}
+
+.ant-input-search {
+    height: 30px;
+    line-height: 30px;
+}
+
+.ant-menu {
+    overflow: hidden;
+    &.ant-menu-inline,
+    &.ant-menu-vertical {
+        border-right: none !important;
+    }
+    .ant-menu-item .anticon,
+    .ant-menu-submenu-title .anticon {
+        margin-right: 16px !important;
+    }
+    &.ant-menu-inline .ant-menu-submenu-title,
+    .ant-menu-item {
+        width: 100% !important;
+        height: 50px !important;
+        margin: 0 0 !important;
+        line-height: 50px !important;
+        text-overflow: clip !important;
+    }
+    &.ant-menu-dark,
+    .ant-menu-dark {
+        background: @light-black !important;
+        .ant-menu-item {
+            background: @light-black;
+        }
+        .ant-menu-submenu {
+            .ant-menu-submenu-title {
+                background: @light-black !important;
+            }
+            .ant-menu-sub,
+            .ant-menu-inline {
+                background: @light-black !important;
+            }
+        }
+    }
+}
+
+.ant-tabs {
+    .ant-tabs-tab {
+        &.ant-tabs-tab-active {
+            font-weight: normal;
+        }
+    }
+}
+
+.ant-select {
+    font-size: 12px;
+    .ant-select-selection-selected-value {
+        font-weight: normal !important;
+    }
+}
+
+.ant-select-dropdown {
+    font-size: @smallFont;
+}
+
+.ant-switch {
+    &.ant-switch-checked {
+        background: @green;
+    }
+}
+
+.ant-table-wrapper {
+    .ant-table {
+        &.ant-table-small {
+            font-size: @smallFont !important;
+            border: none !important;
+            & > .ant-table-content > .ant-table-body > table {
+                padding: 0;
+                td {
+                   height: 40px;
+                }
+            }
+        }
+        .ant-table-title {
+            top: 0;
+            padding-left: 15px;
+            font-size: 14px;
+            border-bottom: 1px solid @light-border;
+        }
+        .ant-table-thead {
+            font-size: 12px;
+            & > tr {
+                & > th {
+                    padding: 10px 16px;
+                    font-size: 14px;
+                    border: none;
+                    background-color: @white !important;
+                    & > span {
+                        color: @title;
+                    }
+                }
+            }
+        }
+        .ant-table-body {
+            table {
+                // 'table-layout: fixed' will let table calculate its width based
+                // on the set value of every td column, not their actual width widened
+                // by their contents when 'table-layout' is 'automatic'. So 'table-layout'
+                // is necessary here in order for the setting 'text-overflow: ellipsis'
+                // of 'td.ellipsis' take effect.
+                table-layout: fixed;
+                max-width: 100%;
+                tr.ant-table-row {
+                    font-size: @smallFont;
+                    &:nth-child(odd) {
+                        background: @table-row-stripe-bg;
+                    }
+                    &:nth-last-child(1) {
+                        td {
+                            border-bottom: 1px solid @table-row-stripe-bg;
+                        }
+                    }
+                    td {
+                        // We set td's height to 56px in normal size table here, because of
+                        // some table columns have operation buttons inside, and they will
+                        // hold up the height of td follow the table layout, so, according
+                        // to this phenomenon, and for the unity of the height of all tables
+                        // we did this.
+                        height: 56px;
+                        border-bottom: none;
+                    }
+                    &.ellipsis {
+                        td {
+                            .fs-text-overflow-ellipsis();
+                        }
+                    }
+                }
+            }
+        }
+        .ant-table-footer {
+            padding: 8px 16px;
+        }
+    }
+    .ant-table-placeholder {
+        margin-top: 8px;
+        font-size: 10px;
+    }
+}
+
+.ant-pagination {
+    &.ant-table-pagination {
+        margin-right: 15px !important;
+        .ant-pagination-total-text {
+            font-size: @smallFont;
+            line-height: 32px;
+        }
+        .ant-pagination-prev {
+            margin-left: 20px;
+        }
+        .ant-pagination-item,
+        .ant-pagination-prev,
+        .ant-pagination-next {
+            min-width: 28px;
+            height: 28px;
+            line-height: 28px;
+            .ant-pagination-item-link {
+                height: 28px;
+                &:before,
+                &:after {
+                    height: 28px;
+                }
+            }
+        }
+    }
+}
+
+.ant-calendar-picker-container {
+    .ant-calendar {
+        .ant-calendar-panel {
+            .ant-calendar-date-panel {
+                .ant-calendar-range-middle {
+                    margin-left: -170px;
+                }
+            }
+        }
+    }
+}
+
+.anticon {
+    &.fs-option-node {
+        margin-right: 15px;
+    }
+}
+
+.ant-spin {
+    .ant-spin-text {
+        margin-top: 80px;
+        font-size: 18px;
+    }
+}
+
+.ant-notification {
+    font-size: @smallFont;
+    .ant-notification-notice-message {
+        font-size: @normalFont;
+    }
+    .ant-notification-notice-description {
+        font-size: @smallFont;
+    }
+}
+
+.ant-steps {
+    .ant-steps-item-description {
+        font-size: @smallFont;
+    }
+}
+
+.show-help-enter.show-help-enter-active,
+.show-help-appear.show-help-appear-active {
+    -webkit-animation-name: none !important;
+    animation-name: none !important;
+}
+
+.show-help-leave.show-help-leave-active {
+    -webkit-animation-name: none !important;
+    animation-name: none !important;
+}
+
+.show-help-enter,
+.show-help-appear {
+    opacity: 1 !important;
+}
+
