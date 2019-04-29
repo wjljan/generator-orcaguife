@@ -99,14 +99,14 @@ module.exports = class extends Generator {
 	}
 
 	install (){
-		const {installNodeModules} = this.answers;
-		if (installNodeModules){
-			this.npmInstall();
-		}
+		this.npmInstall();
 	}
 
 	end (){
 		const {name, installNodeModules} = this.answers;
+		if (installNodeModules){
+			this.spawnCommandSync('npm', ['i']);
+		}
 		this.log(chalk.cyan(`\n${this.numberOfFiles} files were written.`));
 		this.log(chalk.green(`\nSetup project named "${name}" successfully!`));
 		if (installNodeModules){
