@@ -6,12 +6,6 @@ const clearConsole = require('./utils/clearConsole');
 const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
-	/*
-	constructor (args, opts){
-		super(args, opts);
-	}
-	*/
-
 	initializing (){
 		clearConsole();
 		this.log(yosay(chalk.cyan(`Welcome to ${chalk.green('orcaguife')} project setup wizard, please follow the interactions to complete it: \n`)));
@@ -42,9 +36,9 @@ module.exports = class extends Generator {
 				default: `${this.appname} R&D team`
 			}, {
 				type: 'confirm',
-				name: 'installNodeModules',
-				message: `Install the node modules by npm? Before choose yes, make sure your npm registry is switched or you're in an internet environment.'`,
-				default: true
+				name: 'installDependenciesForProject',
+				message: `Install the dependencies of project by npm? Before choose yes, make sure your npm registry is switched or you're in an internet environment.'`,
+				default: false
 			}
 		]);
 		this.log(chalk.cyan('\nStarts writing files...\n'));
@@ -52,25 +46,25 @@ module.exports = class extends Generator {
 
 	writing (){
 		// Make folders.
-		mkdirp('config');
-		mkdirp('coverage');
-		mkdirp('public');
-		mkdirp('scripts');
-		mkdirp('src/components');
-		mkdirp('src/http');
-		mkdirp('src/images');
-		mkdirp('src/redux');
-		mkdirp('src/routerPath');
-		mkdirp('src/services');
-		mkdirp('src/socket');
-		mkdirp('src/styleSheets');
-		mkdirp('src/tests');
-		mkdirp('src/views');
+		const folderPaths = [
+			'config', 'coverage', 'public', 'scripts',
+			'src/components', 'src/http', 'src/images', 'src/redux', 'src/routerPath',
+			'src/services', 'src/socket', 'src/styleSheets', 'src/tests', 'src/views'
+		];
+		folderPaths.forEach(path => mkdirp(path));
 
 		// Write files.
 		// Replace keyword collected from the interaction with user.
 		const {name, version, description, author,} = this.answers;
 
+		// Store the custom files raw blob content in memory.
+		const packageJOSNPath = './package.json';
+		const indexHTMLPath = './public/index.html';
+
+		const packageJOSNBuffer = this.fs.read(this.templatePath(packageJOSNPath), {raw: true});
+		const indexHTMLBuffer = this.fs.read(this.templatePath(indexHTMLPath), {raw: true});
+
+		// Custom the files with parameters provided by users through prompt interaction.
 		this.fs.extendJSON(this.templatePath('./package.json'), {
 			name,
 			version,
@@ -96,30 +90,37 @@ module.exports = class extends Generator {
 			);
 		});
 		this.numberOfFiles = filePaths.length;
+
+		// Restore custom files, delete customized files, and write raw ones from memory for next use.
+		this.fs.delete(this.templatePath(packageJOSNPath));
+		this.fs.write(this.templatePath(packageJOSNPath), packageJOSNBuffer);
+		
+		this.fs.delete(this.templatePath(indexHTMLPath));
+		this.fs.write(this.templatePath(indexHTMLPath), indexHTMLBuffer);
 	}
 
 	install (){
-		this.npmInstall();
+		const {installDependenciesForProject} = this.answers;
+		if (installDependenciesForProject){
+			this.log(chalk.cyan('\nStarts installing dependencies for your project...'));
+			// this.spawnCommandSync('npm', ['i']);
+			this.npmInstall();
+		}
 	}
 
 	end (){
-		const {name, installNodeModules} = this.answers;
-		if (installNodeModules){
-			this.spawnCommandSync('npm', ['i']);
-		}
+		const {name} = this.answers;
+		this.log(chalk.cyan('\nAll dependencies were installed.'));
 		this.log(chalk.cyan(`\n${this.numberOfFiles} files were written.`));
 		this.log(chalk.green(`\nSetup project named "${name}" successfully!`));
-		if (installNodeModules){
-			this.log(chalk.cyan('All node modules were installed.'));
-		}
-		this.log(chalk.cyan('\nVersions of the main node modules are as follows:'));
+		this.log(chalk.cyan('\nVersions of the main dependencies are as follows:'));
 		const dependencies = this.fs.readJSON(this.templatePath('./package.json')).dependencies;
 		['webpack', 'webpack-dev-server', 'babel-core', 'react', 'redux', 'react-redux', 'react-router', 'antd']
 		.forEach(module => {
 			this.log(`${module} ${chalk.green(dependencies[module])}`);
 		});
-		this.log(chalk.cyan('\nSee details in package.json and README.rd files.'));
-		this.log(chalk.cyan('\nThank you for using orcaguife, enjoy your project journey.'));
+		this.log(chalk.cyan(`\nSee details in documents ${chalk.white('package.json')} and ${chalk.white('README.rd')}.`));
+		this.log(chalk.cyan(`\nThank you for using ${chalk.green('orcaguife')}, enjoy your project journey.`));
 	}
 };
 

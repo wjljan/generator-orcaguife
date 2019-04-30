@@ -1,11 +1,11 @@
 {
-  "name": "test",
+  "name": "orcaguife",
   "version": "0.1.0",
-  "description": "test project description",
+  "description": "orcaguife project description",
   "contributors": [
-    "orca ui team"
+    "orcaguife team"
   ],
-  "author": "test R&D team",
+  "author": "orcaguife R&D team",
   "private": true,
   "repository": {
     "type": "git",

@@ -21,3 +21,5 @@ Encapsulated from create-react-app with a lot of custom modifications.
     2.  Publish the modified copy as a new yeoman-generator node module to NPM platform with your own unique module name. Notice: Make sure that your NPM's registry is "https://registry.npmjs.org".
     3.  If you just wanna keep the modified copy in your PC, just run `$ npm link` under the root folder of it. 
     4.  Run the shell commands of previous step 2 .
+  
+4.  Wanna use generator with another tools, check `yeoman-environment` documents.
