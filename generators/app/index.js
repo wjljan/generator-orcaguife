@@ -37,10 +37,24 @@ module.exports = class extends Generator {
 			}, {
 				type: 'confirm',
 				name: 'installDependenciesForProject',
-				message: `Install the dependencies of project by npm? Before choose yes, make sure your npm registry is switched or you're in an internet environment.'`,
+				message: `Install the dependencies of project by NPM?'`,
 				default: false
 			}
 		]);
+
+		const {installDependenciesForProject} = this.answers;
+		if (installDependenciesForProject){
+			let otherAnswers = await this.prompt([
+				{
+					type: 'confirm',
+					name: 'useTaobaoRegistryForNPM',
+					message: `Wanna use taobao registry for NPM installation?'`,
+					default: true
+				}
+			]);
+			this.answers = Object.assign(this.answers, otherAnswers);
+		}
+
 		this.log(chalk.cyan('\nStarts writing files...\n'));
 	}
 
@@ -81,7 +95,7 @@ module.exports = class extends Generator {
 			{name}
 		);
 
-		// Write files.
+		// Copy whole template folder files to project folder.
 		const filePaths = dfsReader(this.templatePath());
 		filePaths.forEach(filePath => {
 			this.fs.copy(
@@ -100,10 +114,13 @@ module.exports = class extends Generator {
 	}
 
 	install (){
-		const {installDependenciesForProject} = this.answers;
+		const {installDependenciesForProject, useTaobaoRegistryForNPM} = this.answers;
 		if (installDependenciesForProject){
-			this.log(chalk.cyan('\nStarts installing dependencies for your project...'));
-			// this.spawnCommandSync('npm', ['i']);
+			if (useTaobaoRegistryForNPM ){
+				this.log(chalk.cyan('\nSwitch current NPM registry to "https://registry.npm.taobao.org"...'));
+				this.spawnCommandSync('npm', ["config", "set", "registry", "https://registry.npm.taobao.org"]);
+			}
+			this.log(chalk.cyan('\nStarts installing dependencies for your project...\n'));
 			this.npmInstall();
 		}
 	}
@@ -117,8 +134,11 @@ module.exports = class extends Generator {
 		this.log(chalk.green(`\nSetup project named "${name}" successfully!`));
 		this.log(chalk.cyan('\nVersions of the main dependencies are as follows:'));
 		const dependencies = this.fs.readJSON(this.templatePath('./package.json')).dependencies;
-		['webpack', 'webpack-dev-server', 'babel-core', 'react', 'redux', 'react-redux', 'react-router', 'antd']
-		.forEach(module => {
+		const mainDependencies = [
+			'webpack', 'webpack-dev-server', 'babel-core',
+			'react', 'redux', 'react-redux', 'react-router', 'antd'
+		];
+		mainDependencies.forEach(module => {
 			this.log(`${module} ${chalk.green(dependencies[module])}`);
 		});
 		this.log(chalk.cyan(`\nSee details in documents ${chalk.white('package.json')} and ${chalk.white('README.rd')}.`));
@@ -127,7 +147,7 @@ module.exports = class extends Generator {
 };
 
 /**
- * Lifecycle descriptions of Generator for reference:
+ * Lifecycle-queue descriptions of Generator for your reference:
  *
  * @initializing  // Get current project status and the basic opts.
  * @prompting      // Interact with user by show some prompts and get answers.
