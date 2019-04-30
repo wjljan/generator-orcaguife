@@ -22,4 +22,4 @@ Encapsulated from create-react-app with a lot of custom modifications.
     3.  If you just wanna keep the modified copy in your PC, just run `$ npm link` under the root folder of it. 
     4.  Run the shell commands of previous step 2 .
   
-4.  Wanna use generator with another tools, check `yeoman-environment` documents.
+4.  Wanna integrate generator into other GUI tools(not a terminal like), check `yeoman-environment` documents.
