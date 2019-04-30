@@ -109,8 +109,10 @@ module.exports = class extends Generator {
 	}
 
 	end (){
-		const {name} = this.answers;
-		this.log(chalk.cyan('\nAll dependencies were installed.'));
+		const {name, installDependenciesForProject} = this.answers;
+		if (installDependenciesForProject){
+			this.log(chalk.cyan('\nAll dependencies were installed.'));
+		}
 		this.log(chalk.cyan(`\n${this.numberOfFiles} files were written.`));
 		this.log(chalk.green(`\nSetup project named "${name}" successfully!`));
 		this.log(chalk.cyan('\nVersions of the main dependencies are as follows:'));
