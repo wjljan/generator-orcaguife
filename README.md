@@ -22,4 +22,33 @@ Encapsulated from create-react-app with a lot of custom modifications.
     3.  If you just wanna keep the modified copy in your PC, just run `$ npm link` under the root folder of it. 
     4.  Run the shell commands of previous step 2 .
   
-4.  Wanna integrate generator into other GUI tools(not a terminal like), check `yeoman-environment` documents.
+4.  Wanna integrate generator into other GUI tools(not terminal like), check [yeoman-environment](https://www.npmjs.com/package/yeoman-environment).
+
+6.  The main versions of dependencies of this ancient CRA we use:
+
+    `webpack` `3.8.1`
+    
+    `webpack-dev-server` `2.9.4`
+    
+    `babel-core` `6.26.0`
+    
+    `react` `16.2.0` Significant changes since version 16.3.
+    
+    `redux` `3.7.2`
+    
+    `react-redux` `5.0.5`
+    
+    `react-router` `4.2.0` A truly dynamic, component-based router.
+    
+    `antd` `3.12.4`  Don't forget the 2018 Christmas Egg.
+    
+    We will do the upgrade if we have the time, or handle it by yourself :).
+
+5. The configurations and features we modified and introduced to the raw CRA for `webpack` and `babel` are as below:
+    1.  Introduce `less-loader` to handle less files.
+    2.  Introduce `HappyPack` to change the compiling ways of some types of files, and optimize compiling speed.
+    3.  Introduce reverse proxy server configuration when running `dev` environment, usage: `$ npm run start -- --rp http:// 192.168.100.100`. So do not need to set it `pakage.json` which way you will modify the code frequently.
+    4.  Introduce module import as required for `antd`, change some configurations in `.babelrc`.
+    5.  Introduce `transform-decorators-legacy` plugins in `.babelrc` for the decorator syntax for EcmaScript. If you upgrade your `babel` version to 7.X, there's another plugin instead.
+    6.  Introduce  `stage-2` preset in `.babelrc` for some new syntax of EcmaScript.
+    7.  Some other little changes, etc.
